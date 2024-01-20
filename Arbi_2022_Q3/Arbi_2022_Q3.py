@@ -1,7 +1,8 @@
 
 def make_sentence(stack):
 
-    numberToEnglish = {'1':'One',
+    numberToEnglish = {
+               '1':'One',
                '2':'Two',
                '3':'Three',
                '4':'Four',
@@ -13,7 +14,8 @@ def make_sentence(stack):
                '0':'Zero'
                }
     
-    conventions = {2:'double',
+    conventions = {
+               2:'double',
                3:'triple',
                4:'quadruple',
                5:'quintuple',
@@ -26,6 +28,7 @@ def make_sentence(stack):
     
     count = len(stack)
     digit = stack.pop()
+    
     if count > 1:
         return  " " + conventions[count] + " " + numberToEnglish[digit]
     else:
