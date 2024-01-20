@@ -32,7 +32,6 @@ def make_sentence(stack):
         return " " + numberToEnglish[digit]
 
 def process_phone_number(phone_number):
-    
 
     cleanedNumber = ""
     englishSentance = ""
@@ -41,23 +40,28 @@ def process_phone_number(phone_number):
     for index, char in enumerate(phone_number):
 
         if char.isdigit():
-            if len(stack) == 0:                             #Only executes if its a first digit OR more than 1 non digit characters are read
+            if len(stack) == 0:
+                #Only executes if its a first digit OR more than 1 non digit characters are read
                 stack.append(char)
             else:
-                if char == stack[-1]:                       #If char is equal to top of the stack, PUSH char
+                if char == stack[-1]:
+                    #If char is equal to top of the stack, PUSH char
                     stack.append(char)
-                else:                                       # If not then clear the stack and append the new char
+                else:
+                    # If not then clear the stack and append the new char
                     englishSentance += make_sentence(stack)
                     stack.clear()
                     stack.append(char)
 
-                if  index == (len(phone_number)-1):         #Only executes for last character
+                if  index == (len(phone_number)-1):
+                    #Only executes for last character
                     englishSentance += make_sentence(stack)
                     stack.clear()
             
             cleanedNumber+=char
         elif not char.isdigit():
-            if len(stack) !=0: 
+            if len(stack) !=0:
+                # Char is non digit and stack is not  empty
                 englishSentance += make_sentence(stack)
                 stack.clear()
 
@@ -69,14 +73,11 @@ def read_phone_numbers():
     with open('test.txt','r') as inFile:
         lines = inFile.readlines()
 
-    
     totalPhoneNumbers = int(lines[0].strip())               
     phoneNumbers = [line.strip() for line in lines[1:]]     
     
-
     for phoneNumber in phoneNumbers:                                    
         result += process_phone_number(phoneNumber) + "\n"
-    
     
     with open('output.txt','w') as outFile:
         lines = outFile.writelines(result)
