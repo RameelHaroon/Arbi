@@ -32,10 +32,10 @@ def calculate_commission(driver, ridesDetails):
             monthsDifference = rideMonth - driver['joiningMonth']
 
             if monthsDifference == 0:
-                # Its the first month of the driver so 0 commission
+                # Its the first month of the driver, 0% commission
                 continue
             elif monthsDifference == 1:
-                # Its the next month of the driver so 10% commission
+                # Its the next month of the driver, 10% commission
                 totalCommission += ride['trip_details']['fare']*0.10
             else:
                 # 20% commission for later months
