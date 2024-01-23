@@ -1,0 +1,7 @@
+6
+Ali, 10000
+Hamza, 50
+John, 300
+Patrick, 5000
+Ayesha, 4000
+Maham, 6000
